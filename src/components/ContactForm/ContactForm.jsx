@@ -1,7 +1,5 @@
-import React from 'react'
 import { Formik, Form, Field } from 'formik';
 import { useId } from 'react';
-import s from './ContactForm.module.css';
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import { useDispatch } from 'react-redux';
@@ -39,20 +37,24 @@ const ContactForm = () => {
     return (
         <>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactFormSchema}>
-                <Form className={s.form}>
-                    <label htmlFor={nameFieldId} className={s.label}>Name
-                        <Field className={s.input} type="text" name="name" id={nameFieldId} />
-                        <ErrorMessage className={s.error} name="name" component="span" />
-                    </label>
+                <div className="card w-70 bg-base-100 card-xs shadow-md justify-self-center my-4">
+                    <div className="card-body">
+                        <Form  >
+                            <label className='input input-accent flex my-4 justify-self-center' htmlFor={nameFieldId} >Name
+                                <Field type="text" name="name" id={nameFieldId} />
+                                <ErrorMessage name="name" component="span" />
+                            </label>
 
 
-                    <label htmlFor={numberFieldId} className={s.label}>Number
-                        <Field className={s.input} type="text" name="number" id={numberFieldId} />
-                        <ErrorMessage className={s.error} name="number" component="span" />
-                    </label>
+                            <label className='input input-accent flex my-4 justify-self-center' htmlFor={numberFieldId} >Number
+                                <Field type="text" name="number" id={numberFieldId} />
+                                <ErrorMessage name="number" component="span" />
+                            </label>
 
-                    <button type="submit">Add Contact</button>
-                </Form>
+                            <button type="submit" className="btn btn-accent flex my-4 justify-self-center">Add Contact</button>
+                        </Form>
+                    </div>
+                </div>
             </Formik>
         </>
     )

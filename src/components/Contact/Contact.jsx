@@ -1,7 +1,6 @@
 import React from 'react'
 import { IoPerson } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
-import s from './Contact.module.css'
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsOps';
 
@@ -17,20 +16,19 @@ const Contact = ({ name, number, id }) => {
 
     return (
         <>
+            <div className="card w-70 lg:w-96 bg-base-100 card-xs shadow-md">
+                <div className="card-body">
+                    <h2 className="card-title flex lg:text-2xl"> <IoPerson className='fill-accent' />{name}</h2>
+                    <p className='text-[16px]' >{number}</p>
 
-            <ul className={s.ul}>
-                <li >
-                    <IoPerson />
-                    <p>{name}</p>
-                </li>
-                <li>
-                    <FaPhoneAlt />
-                    <p>{number}</p>
-                </li>
-            </ul>
+                    <div className="justify-end card-actions">
+                        <button className="btn btn-outline btn-accent" >Edit</button>
+                        <button className="btn btn-accent" onClick={() => { handleDelete(id) }}>Delete</button>
 
+                    </div>
+                </div>
+            </div>
 
-            <button onClick={() => { handleDelete(id) }}>Delete</button>
         </>
     )
 }
