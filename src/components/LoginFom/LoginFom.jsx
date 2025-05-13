@@ -12,7 +12,6 @@ const validationSchema = Yup.object({
 });
 
 const initialValues = {
-    name: '',
     email: '',
     password: '',
 };
@@ -25,34 +24,42 @@ const handleSubmit = (values) => {
 
 function LoginForm() {
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-
-            <Form>
-
-                <Field
-                    name="email"
-                    type='email'
-                    label="Email"
-                />
-                <ErrorMessage name="email" component="span" />
-
-                <Field
-                    name="password"
-                    type="password"
-                    label="Password"
-                />
-                <ErrorMessage name="password" component="span" />
-                <Link to='/login'>You already have account? Sign in!</Link>
-                <button type="submit" variant="contained">Sign up</button>
-
-                <Link to='/'>Back to Homepage</Link>
-
-            </Form>
 
 
-        </Formik>
+        <div className="hero bg-base-200 min-h-screen">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left">
+                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <p className="py-6">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    </p>
+                </div>
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                    <div className="card-body">
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                            <Form>
+                                <fieldset className="fieldset">
+                                    <label className="label">Email</label>
+                                    <Field type="email" name="email" className="input" placeholder="Email" />
+                                    <ErrorMessage className='text-red-700' name="email" component="span" />
+                                    <label className="label">Password</label>
+                                    <Field name="password" type="password" className="input" placeholder="Password" />
+                                    <ErrorMessage className='text-red-700' name="password" component="span" />
+                                    {/* <div><a className="link link-hover">Forgot password?</a></div> */}
+                                    <button className="btn btn-accent mt-4 mb-6" type='submit'>Login</button>
 
+                                    <Link to='/register' className='link link-hover text-[16px]'>You don't have an account? Sign up!</Link>
 
+                                    <Link to='/' className='link link-hover text-[16px]'>Back to Homepage</Link>
+
+                                </fieldset>
+                            </Form>
+                        </Formik>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
