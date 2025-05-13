@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 
 export const api = axios.create({
@@ -28,6 +29,7 @@ export const loginThunk = createAsyncThunk('login', async (body, thunkAPI) => {
         setAuthHeader(response.data.token);
         return response.data;
     } catch (error) {
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
@@ -37,6 +39,7 @@ export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
         await api.post('/users/logout');
 
     } catch (error) {
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
@@ -51,6 +54,7 @@ export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkAPI)
         const response = await api.get('/users/current');
         return response.data;
     } catch (error) {
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })

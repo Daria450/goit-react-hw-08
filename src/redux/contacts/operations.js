@@ -19,7 +19,7 @@ export const fetchContacts = createAsyncThunk('fetchData', async (_, thunkAPI) =
 
         return response.data;
     } catch (error) {
-
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
@@ -30,7 +30,7 @@ export const deleteContact = createAsyncThunk('deleteContact', async (id, thunkA
         toast('Contact was deleted!')
         return response.data.id;
     } catch (error) {
-
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
@@ -40,7 +40,7 @@ export const addContact = createAsyncThunk('addContact', async (body, thunkAPI) 
         toast('A new contact was added!')
         return response.data;
     } catch (error) {
-
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
@@ -50,7 +50,7 @@ export const editContact = createAsyncThunk('editContact', async (body, thunkAPI
         toast('Changes were saved!')
         return response.data.id;
     } catch (error) {
-
+        toast.error(error.message)
         return thunkAPI.rejectWithValue(error.message);
     }
 })
