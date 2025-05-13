@@ -16,7 +16,7 @@ function RegisterForm() {
     const validationSchema = Yup.object({
         name: Yup.string().min(3, "Min 3 symbols").required("Name required"),
         email: Yup.string().email("Invalid email").required("Email required"),
-        password: Yup.string().min(6, "Min 6 symbols").required("Password required"),
+        password: Yup.string().min(7, "Min 7 symbols").required("Password required"),
     });
 
     const initialValues = {
