@@ -4,25 +4,29 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from '../../redux/auth/operations';
 
-
-const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email").required("Email required"),
-    password: Yup.string().min(6, "Min 6 symbols").required("Password required"),
-});
-
-const initialValues = {
-    email: '',
-    password: '',
-};
-
-const handleSubmit = (values) => {
-    console.log(values);
-};
 
 
 
 function LoginForm() {
+    const dispatch = useDispatch();
+    const validationSchema = Yup.object({
+        email: Yup.string().email("Invalid email").required("Email required"),
+        password: Yup.string().min(6, "Min 6 symbols").required("Password required"),
+    });
+
+    const initialValues = {
+        email: '',
+        password: '',
+    };
+
+    const handleSubmit = (values) => {
+        dispatch(loginThunk(values));
+    };
+
+
     return (
 
 

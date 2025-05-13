@@ -26,7 +26,6 @@ function RegisterForm() {
     };
 
     const handleSubmit = (values) => {
-        console.log(values);
         dispatch(registerThunk(values));
     };
 
