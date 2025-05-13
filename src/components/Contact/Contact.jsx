@@ -67,7 +67,7 @@ const Contact = ({ name, number, id }) => {
                             )}
 
                             {isEdit !== id && (
-                                <div className="card-body">
+                                <div className="card-body bg-white">
                                     <h2 className="card-title flex lg:text-2xl">
                                         <IoPerson className="fill-accent" />
                                         {values.name}

@@ -11,7 +11,7 @@ export const api = axios.create({
 const setAuthHeader = (token) => {
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
-//login,password: Gugenberger@gmail.com
+
 
 export const registerThunk = createAsyncThunk('register', async (body, thunkAPI) => {
     try {
