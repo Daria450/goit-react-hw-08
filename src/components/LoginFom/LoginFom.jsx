@@ -50,13 +50,10 @@ function LoginForm() {
                                     <label className="label">Password</label>
                                     <Field name="password" type="password" className="input" placeholder="Password" />
                                     <ErrorMessage className='text-red-700' name="password" component="span" />
-                                    {/* <div><a className="link link-hover">Forgot password?</a></div> */}
                                     <button className="btn btn-accent mt-4 mb-6" type='submit'>Login</button>
 
                                     <Link to='/register' className='link link-hover text-[16px]'>You don't have an account? Sign up!</Link>
-
                                     <Link to='/' className='link link-hover text-[16px]'>Back to Homepage</Link>
-
                                 </fieldset>
                             </Form>
                         </Formik>

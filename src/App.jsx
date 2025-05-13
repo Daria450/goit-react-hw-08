@@ -5,21 +5,34 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 import Layout from './components/Layout/Layout'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { refreshThunk } from './redux/auth/operations'
+import { selectIsRefresh } from './redux/auth/selectors'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute'
+
 
 
 
 function App() {
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk())
+  }, [dispatch]);
 
-  return (
+  const isRefresh = useSelector(selectIsRefresh);
+  return isRefresh ? <span className="loading loading-dots text-accent loading-xl flex justify-self-center"></span> : (
     <>
+
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path='contacts' element={<ContactsPage />} />
+          <Route index element={<RestrictedRoute component={<HomePage />} redirectTo='/contacts' />} />
+          <Route path='contacts' element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
         </Route>
         <Route path='/register' element={<RegistrationPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/login' element={<RestrictedRoute component={<LoginPage />} redirectTo='/contacts' />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 

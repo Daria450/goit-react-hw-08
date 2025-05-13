@@ -55,7 +55,6 @@ function RegisterForm() {
                                     <label className="label">Password</label>
                                     <Field name="password" type="password" className="input" placeholder="Password" />
                                     <ErrorMessage className='text-red-700' name="password" component="span" />
-                                    {/* <div><a className="link link-hover">Forgot password?</a></div> */}
                                     <button className="btn btn-accent mt-4 mb-6" type='submit'>Register</button>
                                     <Link to='/login' className='link link-hover text-[14px]'>You already have an account? Sign in!</Link>
                                     <Link to='/' className='link link-hover text-[14px]'>Back to Homepage</Link>
